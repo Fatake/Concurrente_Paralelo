@@ -3,38 +3,41 @@
  */
 
 public class MiHilo extends Thread{
-    private Alumno []alumnos;
+    private final Alumno[] alumnos;
+
     /**
      * Constructor
+     * 
      * @param nombre
      */
-    public MiHilo(Alumno []alumnos){
+    public MiHilo(final Alumno[] alumnos) {
         this.alumnos = alumnos;
     }
 
     /**
      * //Punto de entrada del hilo
      */
-    public void run(){
-        System.out.println(getName()+" iniciando.");
-        //Como ExtendThread extiende de Thread, puede llamar directamente 
-        //a todos los métodos de Thread, incluido el método getName().
+    public void run() {
+        System.out.println(getName() + " iniciando.");
+        // Como ExtendThread extiende de Thread, puede llamar directamente
+        // a todos los métodos de Thread, incluido el método getName().
         try {
-            for (int i = 0; i < this.alumnos.length ; i++){
+            for (int i = 0; i < this.alumnos.length; i++) {
                 Thread.sleep(5);
-                System.out.println(""+alumnos[i]);
+                System.out.println("" + alumnos[i]);
             }
-        }catch (InterruptedException exc){
-            System.out.println(getName()+ " interrumpido.");
+        } catch (final InterruptedException exc) {
+            System.out.println(getName() + " interrumpido.");
         }
-            System.out.println(getName()+ " finalizando.");
+        System.out.println(getName() + " finalizando.");
     }
-    
+
     /**
      * Main
+     * 
      * @param args
      */
-    public static void main(String args[]){
+    public static void main(final String args[]) {
         /*
          *  Arizmendi Ramírez Esiel Kevin, 201737811
          *  Coria Rios Marco Antonio, 201734576
