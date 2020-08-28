@@ -4,9 +4,9 @@ import java.util.Arrays;
  *  Benemérita Universidad Autónoma de Puebla
  *  Programación Concurrente y Paralela
  *  Integrantes:
- *  Arizmendi Ramírez Esiel Kevin, 2017
+ *  Arizmendi Ramírez Esiel Kevin, 201737811
  *  Coria Rios Marco Antonio, 201734576
- *  Ruiz Lozano Paulo Cesar, 2017
+ *  Ruiz Lozano Paulo Cesar, 201734576
  */
 public class Alumno {
     public enum Rol {
