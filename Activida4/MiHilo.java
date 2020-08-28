@@ -43,11 +43,6 @@ public class MiHilo extends Thread{
      * @param args
      */
     public static void main(final String args[]) {
-        /*
-         *  Arizmendi Ramírez Esiel Kevin, 201737811
-         *  Coria Rios Marco Antonio, 201734576
-         *  Ruiz Lozano Paulo Cesar, 201727952
-         */
         Alumno[] alumnos = new Alumno[] {
             new Alumno("Marco Antonio", "Coria", "Rios", 201734576, new Alumno.Rol[] {Alumno.Rol.LIDER, Alumno.Rol.PROGRAMADOR}),
             new Alumno("Esiel Kevin", "Arizmendi", "Ramírez", 201737811, new Alumno.Rol[] {Alumno.Rol.DISEÑADOR, Alumno.Rol.PROGRAMADOR}),
