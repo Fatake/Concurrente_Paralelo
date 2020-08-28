@@ -7,11 +7,37 @@
  */
 
 public class Alumno {
+    public enum Rol {
+        PROGRAMADOR {
+            @Override
+            public String toString(){
+                return "Programador";
+            }
+        },
+        LIDER {
+            @Override
+            public String toString(){
+                return "Lider";
+            }
+        },
+        TESTER {
+            @Override
+            public String toString(){
+                return "Tester";
+            }
+        },
+        DISEÑADOR {
+            @Override
+            public String toString(){
+                return "Diseñador";
+            }
+        }
+    }
     public final String nombre;
     public final String apellidoPaterno;
     public final String apellidoMaterno;
     public final int matricula;
-    public final String rol;//(programador,líder,tester,diseñador)
+    public final Rol[] roles;
     /**
      * Constructor
      * @param nombre
@@ -19,11 +45,11 @@ public class Alumno {
      * @param am
      * 
      */
-    public Alumno (String nombre, String ap, String am, int mat, String rol){
+    public Alumno (String nombre, String ap, String am, int mat, Rol[] roles){
         this.nombre = nombre;
         this.apellidoPaterno = ap;
         this.apellidoMaterno = am;
         this.matricula = mat;
-        this.rol = rol;
+        this.roles = roles;
     }
 }
