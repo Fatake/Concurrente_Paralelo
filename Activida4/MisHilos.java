@@ -47,8 +47,8 @@ public class MisHilos extends Thread {
 
         MisHilos misHilos[] = new MisHilos[3]; 
         misHilos[0] = new MisHilos("primero",1,alumnos[0]);
-        misHilos[1] = new MisHilos("segundo",2,alumnos[0]);
-        misHilos[2] = new MisHilos("tercero",3,alumnos[0]);
+        misHilos[1] = new MisHilos("segundo",2,alumnos[1]);
+        misHilos[2] = new MisHilos("tercero",3,alumnos[2]);
         misHilos[0].start();
         misHilos[1].start();
         misHilos[2].start();
