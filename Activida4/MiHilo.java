@@ -1,7 +1,12 @@
-/**
- * Clase mi Hilo
+/**  
+ * Clase Mi Hilo
+ *  Benemérita Universidad Autónoma de Puebla
+ *  Programación Concurrente y Paralela
+ *  Integrantes:
+ *  Arizmendi Ramírez Esiel Kevin, 2017
+ *  Coria Rios Marco Antonio, 201734576
+ *  Ruiz Lozano Paulo Cesar, 2017
  */
-
 public class MiHilo extends Thread{
     private final Alumno[] alumnos;
 
