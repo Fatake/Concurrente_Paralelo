@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /**  
  *  Benemérita Universidad Autónoma de Puebla
  *  Programación Concurrente y Paralela
@@ -56,6 +58,7 @@ public class Alumno {
      * To String
      */
     public String toString(){
-        return this.nombre+" "+this.apellidoPaterno+" "+this.apellidoMaterno+" "+this.matricula;
+        return this.nombre + " " + this.apellidoPaterno + " " + this.apellidoMaterno + " " + this.matricula + " Roles: " + 
+                Arrays.toString(roles);
     }
 }

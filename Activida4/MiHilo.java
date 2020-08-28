@@ -1,8 +1,7 @@
-import Alumno.Rol;
-
 /**
  * Clase mi Hilo
  */
+
 public class MiHilo extends Thread{
     private Alumno []alumnos;
     /**
@@ -37,16 +36,17 @@ public class MiHilo extends Thread{
      */
     public static void main(String args[]){
         /*
-         * rizmendi Ramírez Esiel Kevin, 2017
+         *  Arizmendi Ramírez Esiel Kevin, 201737811
          *  Coria Rios Marco Antonio, 201734576
-         *  Ruiz Lozano Paulo Cesar, 2017
+         *  Ruiz Lozano Paulo Cesar, 201727952
          */
-        Alumno alumo1 = new Alumno("Marco", "Coria","Rios", 2017, Alumno.Rol.PROGRMADOR);
-        Alumno alumo2 = new Alumno("Esiel", "Rizmendi","Ramirez", 201734576, Alumno.Rol.PROGRMADOR);
-        Alumno alumo3 = new Alumno("Paulo", "Ruiz","Lozano", 201727952, Alumno.Rol.PROGRMADOR);
+        Alumno[] alumnos = new Alumno[] {
+            new Alumno("Marco Antonio", "Coria", "Rios", 201734576, new Alumno.Rol[] {Alumno.Rol.LIDER, Alumno.Rol.PROGRAMADOR}),
+            new Alumno("Esiel Kevin", "Arizmendi", "Ramírez", 201737811, new Alumno.Rol[] {Alumno.Rol.DISEÑADOR, Alumno.Rol.PROGRAMADOR}),
+            new Alumno("Paulo Cesar", "Ruiz", "Lozano", 201727952, new Alumno.Rol[] {Alumno.Rol.TESTER, Alumno.Rol.PROGRAMADOR})
+        };
 
-        Alumno []lista = {alumo1,alumo2,alumo3};
-        MiHilo miHilo = new MiHilo(lista); 
+        MiHilo miHilo = new MiHilo(alumnos); 
         miHilo.start();
 	}
 }
