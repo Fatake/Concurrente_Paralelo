@@ -2,13 +2,14 @@
  * Clase mi Hilo
  */
 public class MiHilo extends Thread{
+    Alumno []alumnos;
     /**
      * Constructor
      * @param nombre
      */
-    public MiHilo(String nombre){
-    //super se usa para llamar a la versión del constructor de Thread
+    public MiHilo(String nombre,Alumno []alumnos){
         super(nombre);
+        this.alumnos = alumnos;
     }
 
     /**
