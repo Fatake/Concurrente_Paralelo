@@ -9,11 +9,13 @@
  */
 public class MisHilos extends Thread {
     int lugar;
+    private Alumno alumno;
     //Construye un nuevo hilo.
-    MisHilos(String nombre,int lugar){
+    public MisHilos(String nombre,int lugar,final Alumno alumno){
         //super se usa para llamar a la versiÃ³n del constructor de Thread
         super(nombre);
-        this.lugar=lugar;
+        this.lugar = lugar;
+        this.alumno = alumno;
     }
     //Punto de entrada del hilo
     public void run(){
@@ -23,7 +25,7 @@ public class MisHilos extends Thread {
         try {
             for (int cont=0;cont<11;cont++){
                 Thread.sleep(5*lugar);
-                System.out.println("En "+getName()+ ", el recuento es "+cont);
+                System.out.println("" + alumno);
             }
         }catch (InterruptedException exc){
             System.out.println(getName()+ " interrumpido.");
