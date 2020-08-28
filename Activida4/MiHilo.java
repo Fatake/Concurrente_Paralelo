@@ -1,4 +1,7 @@
-class MiHilo extends Thread{
+/**
+ * Clase mi Hilo
+ */
+public class MiHilo extends Thread{
     /**
      * Constructor
      * @param nombre
