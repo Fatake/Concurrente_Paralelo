@@ -52,4 +52,10 @@ public class Alumno {
         this.matricula = mat;
         this.roles = roles;
     }
+    /**
+     * To String
+     */
+    public String toString(){
+        return this.nombre+" "+this.apellidoPaterno+" "+this.apellidoMaterno+" "+this.matricula;
+    }
 }
