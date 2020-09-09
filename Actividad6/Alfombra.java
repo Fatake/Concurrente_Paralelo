@@ -2,13 +2,13 @@
  * Clase alfombra
  */
 public class Alfombra extends Thread {
-    private ObjectGeometric [] objetos;
+    private GeometricObject [] objetos;
 
     /**
      * Constructor
      * @param objetos
      */
-    public Alfombra(ObjectGeometric [] objetos) {
+    public Alfombra(GeometricObject [] objetos) {
         this.alumnos = alumnos;
     }
 
