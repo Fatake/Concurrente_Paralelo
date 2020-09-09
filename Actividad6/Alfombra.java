@@ -9,10 +9,9 @@ public class Alfombra extends Thread {
      * @param objetos
      */
     public Alfombra(GeometricObject [] objetos) {
-        this.alumnos = alumnos;
+        this.objetos = objetos;
     }
 
-    
     public void run() {
         System.out.println(getName() + " iniciando.");
         
