@@ -17,14 +17,21 @@ public class Test{
         Random rand = new Random();
         
         for (int i = 0; i < NUM_OBJETOS; i++) {
-            obs[i] = new Rectangle("azul", rand.nextInt(16), rand.nextInt(16));
+            obs[i] = new Rectangle(getColor(), rand.nextInt(16), rand.nextInt(16));
         }
         return obs;
+    }
+    /**
+     * Genera un color aleatoro
+     * @return
+     */
+    private String getColor(){
+        return "azul";
     }
     public static void main(String args[]){
         Test aux = new Test();
         objetos = aux.generaObjetos();
         
-        System.out.println("Hola Mundo"+);
+        System.out.println("Hola Mundo");
     }
 }
