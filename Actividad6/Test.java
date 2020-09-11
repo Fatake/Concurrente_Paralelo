@@ -26,8 +26,27 @@ public class Test{
      * @return
      */
     private String getColor(){
-        return "azul";
+        Random rand = new Random();
+        switch ( rand.nextInt(7) ) {
+            case 0:
+                return "Azul";
+            case 1:
+                return "Rojo";
+            case 2:
+                return "Morado";
+            case 3:
+                return "Amarillo";
+            case 4:
+                return "Negro";
+            case 5:
+                return "Blanco";
+        }
+        return "Negro";
     }
+    /**
+     * Main
+     * @param args
+     */
     public static void main(String args[]){
         Test aux = new Test();
         objetos = aux.generaObjetos();
