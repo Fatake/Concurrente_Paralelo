@@ -9,8 +9,8 @@ public class Rectangle extends GeometricObject {
      * @param width
      * @param length
      */
-    public Rectangle(String color, boolean filled, double width, double length) {
-        super(color, filled);
+    public Rectangle(String color, double width, double length) {
+        super(color);
         this.width = width;
         this.length = length;
     }
