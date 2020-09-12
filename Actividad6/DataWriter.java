@@ -9,6 +9,11 @@ public class DataWriter extends Thread {
 
     @Override
     public void run() {
-        carpet.writeToFile(squareID);
+        try {
+            carpet.writeToFile(squareID);
+        }
+        catch (InterruptedException ie) {
+            
+        }
     }
 }

@@ -19,7 +19,7 @@ public class Test extends Thread {
 
     public Test() {
         rand = new Random();
-        sem = new Sempahore(1);
+        sem = new Semaphore(1);
         count = 10;
     }
 
@@ -37,7 +37,7 @@ public class Test extends Thread {
 
         // Crea los hilos para el procesamiento
         for (int i = 0; i < MAX_SQUARES; i++) {
-            AreaCalculator calc = new AreaCalculator(squares.get(i));
+            AreaCalculator calc = new AreaCalculator(this, squares.get(i));
             DataWriter writer = new DataWriter(i, carpet);
 
             calc.start();
@@ -46,14 +46,20 @@ public class Test extends Thread {
 
         // Espera a que los hilos terminen y muestra el resultado
         while (count != 0) {
-            sleep(200);
+            try {
+                sleep(200);
+            }
+            catch (InterruptedException ie) {
+                System.out.println("Error");
+                System.exit(-1);
+            }
         }
 
         // Calcula el área total de la alfombra y la imprime en pantalla
-        System.out.println("Área total de la alfombra: " + carpet.totalSurface());
+        System.out.println("Area total de la alfombra: " + carpet.totalSurface());
     }
 
-    public void notifyFinish() {
+    public void notifyFinish() throws InterruptedException {
         sem.acquire();
         count--;
         sem.release();
