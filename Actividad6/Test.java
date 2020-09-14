@@ -1,6 +1,9 @@
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.concurrent.Semaphore;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.TimeUnit;
+
 
 
 /**
@@ -12,63 +15,38 @@ import java.util.concurrent.Semaphore;
  * También contiene el método <code>main</code>.
  */
 
-public class Test extends Thread {
+public class Test{
+    private ExecutorService es;
     private Random rand;
-    private Semaphore sem;
-    private int count;
+    private Carpet carpet;
+    private int areaTotal;
 
-    public Test() {
+    public Test() throws InterruptedException {
         rand = new Random();
-        sem = new Semaphore(1);
-        count = 10;
-    }
-
-    @Override
-    public void run() {
         ArrayList<Square> squares = new ArrayList<>();
+        es = Executors.newCachedThreadPool();
 
         // Crea los cuadrados, con tamaño y color aleatorios
-        for (int i = 0; i < MAX_SQUARES; i++) {
-            squares.add(new Square(rand.nextInt(14) + 1, Integer.toHexString(rand.nextInt(0xFFFFFF)), i));
-        }
-
-        // Crea la alfombra
-        Carpet carpet = new Carpet(squares, "carpet.txt");
-
-        // Crea los hilos para el procesamiento
-        for (int i = 0; i < MAX_SQUARES; i++) {
-            AreaCalculator calc = new AreaCalculator(this, squares.get(i));
-            DataWriter writer = new DataWriter(i, carpet);
-
-            calc.start();
-            writer.start();
-        }
-
-        // Espera a que los hilos terminen y muestra el resultado
-        while (count != 0) {
-            try {
-                sleep(200);
-            }
-            catch (InterruptedException ie) {
-                System.out.println("Error");
-                System.exit(-1);
-            }
-        }
-
-        // Calcula el área total de la alfombra y la imprime en pantalla
-        System.out.println("Area total de la alfombra: " + carpet.totalSurface());
+        for (int i = 0; i < MAX_SQUARES; i++)
+            squares.add(new Square(rand.nextInt(14) + 1, Integer.toHexString(rand.nextInt(0xFFFFFF)), new Point(rand.nextInt(14) + 1, rand.nextInt(14) + 1)));
+        
+        // Crea el hilo de la alfombra
+        System.out.println("TEST CREA ALFOMBRA");
+        carpet = new Carpet(squares, "carpet.txt");
+        es.execute(carpet);
+        es.shutdown();
+        
+        while (!es.awaitTermination(60, TimeUnit.SECONDS))
+            System.out.println("TEST...");
+        
+        System.out.println("TEST TERMINO");
+        System.out.println("AREA TOTAL: " + carpet.getAreaTotal());
     }
-
-    public void notifyFinish() throws InterruptedException {
-        sem.acquire();
-        count--;
-        sem.release();
-    }
-
+    
     public static final int MAX_SQUARES = 10;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Test test = new Test();
-        test.start();
     }
+    
 }

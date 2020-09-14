@@ -1,44 +1,61 @@
 import java.util.ArrayList;
-import java.util.concurrent.Semaphore;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.io.PrintWriter;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
-public class Carpet {
+public class Carpet implements Runnable{
+    private ExecutorService es;
     private ArrayList<Square> squareList;
     private final String filename;
-    private Semaphore sem;
-    private FileWriter writer;
+    private PrintWriter writer;
+    private int areaTotal;
 
     public Carpet(ArrayList<Square> squareList, String filename) {
         this.squareList = squareList;
         this.filename = filename;
-
-        sem = new Semaphore(1);
+        es = Executors.newCachedThreadPool();
     }
 
-    public boolean writeToFile(int index) throws InterruptedException {
-        sem.acquire();
+    synchronized public boolean writeToFile(int index) throws InterruptedException {
         try {
             File f = new File(filename);
-            String content = "";
-            if (f.length() != 0) content = new String(Files.readAllBytes(Paths.get(filename)));
-            System.out.println("Wrote " + index);
-            writer = new FileWriter(f);
-            writer.write(content + squareList.get(index).toString() + "\n");
+            writer = new PrintWriter(new FileWriter(f, true));
+            writer.println(squareList.get(index));
             writer.close();
-            sem.release();
             return true;
         } catch (IOException e) {
             return false;
         }
     }
-
-    public int totalSurface() {
-        int surface = 0;
-        for (Square square : squareList) surface += square.getArea();
-        return surface;
+    
+    public void addAreatTotal(int index){
+        this.areaTotal += squareList.get(index).getArea();
     }
+    
+    public int getAreaTotal(){
+        return areaTotal;
+    }
+
+    @Override
+    public void run() {
+        for (int i = 0; i < squareList.size() ; i++){
+            System.out.println("DATA WRITER " + i);
+            es.execute(new DataWriter(this, i));
+            System.out.println("AREA CALCULATOR " + i);
+            es.execute(new AreaCalculator(this, i));
+        }
+        es.shutdown();
+        try {
+            while (!es.awaitTermination(60, TimeUnit.SECONDS))
+                System.out.println("Carpet...");
+        } catch (InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }
+        System.out.println("CARPET TERMINO");
+    } 
 }
+
