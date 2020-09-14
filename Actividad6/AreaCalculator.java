@@ -15,9 +15,8 @@ public class AreaCalculator extends Thread {
         // Notifica que su proceso ha terminado
         try {
             master.notifyFinish();
-        }
-        catch (InterruptedException ie) {
-            
+        }catch (InterruptedException ie) {
+            System.err.println(ie.toString());
         }
     }
 }
