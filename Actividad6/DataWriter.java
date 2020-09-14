@@ -1,19 +1,20 @@
-public class DataWriter extends Thread {
-    private final int squareID;
+public class DataWriter implements Runnable{
+    
     private final Carpet carpet;
+    private final int index;
 
-    public DataWriter(int squareID, Carpet carpet) {
-        this.squareID = squareID;
+    public DataWriter(Carpet carpet, int index) {
         this.carpet = carpet;
+        this.index = index;
     }
-
+    
     @Override
     public void run() {
         try {
-            carpet.writeToFile(squareID);
-        }
-        catch (InterruptedException ie) {
-            
+            carpet.writeToFile(index);
+        } catch (InterruptedException ex) {
+            Thread.currentThread().interrupt();
         }
     }
+    
 }

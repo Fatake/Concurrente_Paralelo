@@ -1,10 +1,10 @@
 public class Square {
     private int sideLength;
     private String color;
-    private int position;
+    private Point position;
     private int area;
 
-    public Square(int sideLength, String color, int position) {
+    public Square(int sideLength, String color, Point position) {
         this.sideLength = sideLength;
         this.color = color;
         this.position = position;
@@ -19,16 +19,12 @@ public class Square {
         return color;
     }
 
-    public int getPosition() {
+    public Point getPosition() {
         return position;
     }
 
     public int getArea() {
-        return area;
-    }
-
-    public void setArea(int area) {
-        this.area = area;
+        return (int) Math.pow(sideLength, 2);
     }
 
     @Override
@@ -36,3 +32,4 @@ public class Square {
         return "Square #" + position + ", Side Length: " + sideLength + ", Color: #" + color;
     }
 }
+
