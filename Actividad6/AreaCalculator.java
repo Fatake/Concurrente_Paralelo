@@ -13,5 +13,4 @@ public class AreaCalculator implements Runnable{
     public void run() {
         carpet.addAreatTotal(index);
     }
-    
 }
