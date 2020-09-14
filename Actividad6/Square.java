@@ -2,13 +2,11 @@ public class Square {
     private int sideLength;
     private String color;
     private Point position;
-    private int area;
 
     public Square(int sideLength, String color, Point position) {
         this.sideLength = sideLength;
         this.color = color;
         this.position = position;
-        area = 0;
     }
 
     public int getSideLength() {
