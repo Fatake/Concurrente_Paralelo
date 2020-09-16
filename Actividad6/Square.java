@@ -1,4 +1,18 @@
-public class Square {
+/**  
+ *  Benemérita Universidad Autónoma de Puebla
+ *  Programación Concurrente y Paralela
+ *  Integrantes:
+ *  Arizmendi Ramírez Esiel Kevin, 201737811
+ *  Coria Rios Marco Antonio, 201734576
+ *  Ruiz Lozano Paulo Cesar, 201734576
+ */
+
+/**
+ * Clase que representa un cuadrado, asi como las coordenadas
+ * correspondientes en la clase alfombra
+ */
+
+ public class Square {
     private int sideLength;
     private String color;
     private Point position;

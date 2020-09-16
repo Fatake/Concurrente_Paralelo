@@ -1,3 +1,16 @@
+/**  
+ *  Benemérita Universidad Autónoma de Puebla
+ *  Programación Concurrente y Paralela
+ *  Integrantes:
+ *  Arizmendi Ramírez Esiel Kevin, 201737811
+ *  Coria Rios Marco Antonio, 201734576
+ *  Ruiz Lozano Paulo Cesar, 201734576
+ */
+
+/* 
+* Ubica las coordenadas de cada cuadrado en la alfombra
+*/
+
 public class Point {
     private int x;
     private int y;
