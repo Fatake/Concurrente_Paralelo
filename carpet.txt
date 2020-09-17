@@ -8,3 +8,13 @@ Square #Point{x=13, y=6}, Side Length: 5, Color: #7c0974
 Square #Point{x=1, y=14}, Side Length: 4, Color: #5c59b0
 Square #Point{x=1, y=11}, Side Length: 14, Color: #e758aa
 Square #Point{x=6, y=1}, Side Length: 8, Color: #edb5de
+Square #Point{x=10, y=5}, Side Length: 11, Color: #5e670e
+Square #Point{x=1, y=8}, Side Length: 8, Color: #68a542
+Square #Point{x=1, y=7}, Side Length: 5, Color: #a74b5a
+Square #Point{x=4, y=5}, Side Length: 6, Color: #fd2427
+Square #Point{x=3, y=5}, Side Length: 3, Color: #71df8a
+Square #Point{x=3, y=9}, Side Length: 2, Color: #df48da
+Square #Point{x=11, y=11}, Side Length: 14, Color: #c4b716
+Square #Point{x=6, y=13}, Side Length: 1, Color: #ea2b2b
+Square #Point{x=11, y=9}, Side Length: 2, Color: #825012
+Square #Point{x=14, y=8}, Side Length: 14, Color: #e715f6
