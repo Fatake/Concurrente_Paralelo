@@ -10,11 +10,15 @@
 /* 
 * Ubica las coordenadas de cada cuadrado en la alfombra
 */
-
 public class Point {
     private int x;
     private int y;
 
+    /**
+     * 
+     * @param x
+     * @param y
+     */
     public Point(int x, int y) {
         this.x = x;
         this.y = y;
@@ -40,9 +44,4 @@ public class Point {
     public String toString() {
         return "Point{" + "x=" + x + ", y=" + y + '}';
     }
-    
-    
-    
-    
-    
 }

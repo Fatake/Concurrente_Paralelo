@@ -28,12 +28,23 @@ public class Carpet implements Runnable{
     private PrintWriter writer;
     private int areaTotal;
 
+    /**
+     * Constructor
+     * @param squareList
+     * @param filename
+     */
     public Carpet(ArrayList<Square> squareList, String filename) {
         this.squareList = squareList;
         this.filename = filename;
         es = Executors.newCachedThreadPool();
     }
 
+    /**
+     * Escritor a archivo, de forma sincrona para cada hilo
+     * @param index
+     * @return
+     * @throws InterruptedException
+     */
     public synchronized boolean writeToFile(int index) throws InterruptedException {
         try {
             File f = new File(filename);
@@ -46,6 +57,10 @@ public class Carpet implements Runnable{
         }
     }
     
+    /**
+     * Calculador de Area total
+     * @param index
+     */
     public synchronized void addAreatTotal(int index){
         this.areaTotal += squareList.get(index).getArea();
     }
@@ -53,7 +68,10 @@ public class Carpet implements Runnable{
     public int getAreaTotal(){
         return areaTotal;
     }
-
+    
+    /**
+     * Ejecuta el hilo
+     */
     @Override
     public void run() {
         for (int i = 0; i < squareList.size() ; i++){

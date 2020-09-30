@@ -23,15 +23,14 @@ public class Test{
     private ExecutorService es;
     private Random rand;
     private Carpet carpet;
-    
+
     //Numero maximo de Cuadrados
     public static final int MAX_SQUARES = 10;
 
     /**
      * Constructor
-     * @throws InterruptedException
      */
-    public Test() throws InterruptedException {  };
+    public Test() {  };
 
     /**
      * Ejecutor
@@ -39,13 +38,19 @@ public class Test{
      */
     public void ejecutar() throws InterruptedException{
         rand = new Random();
+        // Lista de Cuadrados
         ArrayList<Square> squares = new ArrayList<>();
+
+        //Se genera un nuevo pool de hilos
         es = Executors.newCachedThreadPool();
 
         // Crea los cuadrados, con tamaño y color aleatorios
-        for (int i = 0; i < MAX_SQUARES; i++)
-            squares.add(new Square(rand.nextInt(14) + 1, Integer.toHexString(rand.nextInt(0xFFFFFF)), new Point(rand.nextInt(14) + 1, rand.nextInt(14) + 1)));
-        
+        for (int i = 0; i < MAX_SQUARES; i++){
+            squares.add( new Square(rand.nextInt(14) + 1
+            , Integer.toHexString(rand.nextInt(0xFFFFFF))
+            , new Point(rand.nextInt(14) + 1, rand.nextInt(14) + 1)));
+        }
+            
         // Crea el hilo de la alfombra
         //System.out.println("TEST CREA ALFOMBRA");
         carpet = new Carpet(squares, "carpet.txt");
@@ -71,5 +76,4 @@ public class Test{
         Test test = new Test();
         test.ejecutar();
     }
-    
 }
