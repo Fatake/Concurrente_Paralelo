@@ -7,7 +7,7 @@ Serie de programas creados en python, java y c para el aprendizaje de concurrenc
 
 1. [Actividad4](https://github.com/Fatake/Concurrente_Paralelo/tree/master/Activida4 "Actividad4")
 2. [Actividad6](https://github.com/Fatake/Concurrente_Paralelo/tree/master/Actividad6 "Actividad6")
-3. [Actividad7](https://github.com/Fatake/Concurrente_Paralelo/tree/master/Actividad6 "Actividad7")
+3. [Actividad7](https://github.com/Fatake/Concurrente_Paralelo/tree/master/Actividad7 "Actividad7")
 
 ## Descripción Actividades
 
@@ -19,7 +19,6 @@ Realizar un conjunto de hilos en Java
 
 **Instrucciones**
 
-* Generar equipos de trabajo
 * Modificar el archivo MisHilos.java(archivo independiente)
 * Con el arreglo de alumnos de la actividad previa, dentro del main realizar el envio de cada alumno a un hilo y mostrar su información.
 * Cargar el archivo MiHilo.java y ejecutarlo(se encuentra como archivo independiente)
@@ -38,7 +37,6 @@ Realizar actividades en hilos para un fin común
 
 **Instrucciones**
 
-* Generar equipos de trabajo
 * Revisar el capítulo Hilos del libro de Joyanes pagina 697, pueden revisar todo el capítulo desde la página 669 o sólo el apartado que requerimos 690 hasta antes de tuberías.
 * Con base en los archivos vistos en clase generar lo siguiente
   * Crear una clase Test que cree un arreglo de objetos geométricos:  cuadrado(elaboración libre) considerando tamaño y color para cada objeto(deben ser de diferente tamaño y color)
@@ -57,7 +55,6 @@ Aplicar las condiciones de Bernstein al proceso concurrente de la Actividad 6 Hi
 
 **Instrucciones**
 
-* Generar equipos de trabajo
 * Revisar las diapositivas Condiciones de Bernstein.pdf
 
 Revisar el video [https://www.youtube.com/watch?v=riGl1djNpfg](https://www.youtube.com/watch?v=riGl1djNpfg)
