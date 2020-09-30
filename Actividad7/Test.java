@@ -23,8 +23,21 @@ public class Test{
     private ExecutorService es;
     private Random rand;
     private Carpet carpet;
+    
+    //Numero maximo de Cuadrados
+    public static final int MAX_SQUARES = 10;
 
-    public Test() throws InterruptedException {
+    /**
+     * Constructor
+     * @throws InterruptedException
+     */
+    public Test() throws InterruptedException {  };
+
+    /**
+     * Ejecutor
+     * @throws InterruptedException
+     */
+    public void ejecutar() throws InterruptedException{
         rand = new Random();
         ArrayList<Square> squares = new ArrayList<>();
         es = Executors.newCachedThreadPool();
@@ -49,10 +62,14 @@ public class Test{
         System.out.println("AREA TOTAL: " + carpet.getAreaTotal());
     }
     
-    public static final int MAX_SQUARES = 10;
-
+    /**
+     * Main Function
+     * @param args
+     * @throws InterruptedException
+     */
     public static void main(String[] args) throws InterruptedException {
         Test test = new Test();
+        test.ejecutar();
     }
     
 }
