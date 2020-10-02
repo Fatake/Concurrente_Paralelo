@@ -11,12 +11,16 @@
  * Hilo encargado de escribir la información de un cuadrado
  * de la alfombra en su archivo
  */
-
- public class DataWriter implements Runnable{
+public class DataWriter implements Runnable{
     
     private final Carpet carpet;
     private final int index;
 
+    /**
+     * constructor 
+     * @param carpet
+     * @param index
+     */
     public DataWriter(Carpet carpet, int index) {
         this.carpet = carpet;
         this.index = index;
@@ -29,6 +33,5 @@
         } catch (InterruptedException ex) {
             Thread.currentThread().interrupt();
         }
-    }
-    
+    } 
 }

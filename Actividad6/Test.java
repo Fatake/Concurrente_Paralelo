@@ -18,25 +18,39 @@ import java.util.concurrent.TimeUnit;
  * el objeto (hilo) de clase {@link Carpet}, al cual le pasa la lista creada.
  * También contiene el método <code>main</code>.
  */
-
 public class Test{
+    //Constantes
+    public static final int MAX_SQUARES = 10;
+
+    //Atributos
     private ExecutorService es;
     private Random rand;
     private Carpet carpet;
 
-    public Test() throws InterruptedException {
+    //Constuctor
+    public Test(){  };
+
+    /**
+     * Inicializa 
+     * @throws InterruptedException
+     */
+    public void init() throws InterruptedException{
         rand = new Random();
-        ArrayList<Square> squares = new ArrayList<>();
-        es = Executors.newCachedThreadPool();
+        ArrayList<Square> squares = new ArrayList<>(); //Lista de cuadrados
+        es = Executors.newCachedThreadPool(); // Crea una nueva picina de hilos
 
         // Crea los cuadrados, con tamaño y color aleatorios
-        for (int i = 0; i < MAX_SQUARES; i++)
-            squares.add(new Square(rand.nextInt(14) + 1, Integer.toHexString(rand.nextInt(0xFFFFFF)), new Point(rand.nextInt(14) + 1, rand.nextInt(14) + 1)));
-        
+        for (int i = 0; i < MAX_SQUARES; i++){
+            squares.add( new Square( rand.nextInt(14) + 1, 
+                        Integer.toHexString(rand.nextInt(0xFFFFFF)), 
+                            new Point(rand.nextInt(14) + 1, rand.nextInt(14) + 1) ) );
+    
+        }
+            
         // Crea el hilo de la alfombra
         //System.out.println("TEST CREA ALFOMBRA");
         carpet = new Carpet(squares, "carpet.txt");
-        es.execute(carpet);
+        es.execute(carpet);// ejecuta el hilo carpeta
         es.shutdown();
         
         //Se mantiene en un ciclo infinito hasta que todo el procesamiento haya terminado
@@ -49,10 +63,13 @@ public class Test{
         System.out.println("AREA TOTAL: " + carpet.getAreaTotal());
     }
     
-    public static final int MAX_SQUARES = 10;
-
+    /**
+     * Main del programa
+     * @param args
+     * @throws InterruptedException
+     */
     public static void main(String[] args) throws InterruptedException {
         Test test = new Test();
+        test.init();
     }
-    
 }

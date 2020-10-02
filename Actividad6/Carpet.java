@@ -22,18 +22,29 @@ import java.util.concurrent.TimeUnit;
 * la información de cada uno de ellos, respectivamente, ambos de manera sincronizada.
 */
 public class Carpet implements Runnable{
-    private ExecutorService es;
-    private ArrayList<Square> squareList;
-    private final String filename;
-    private PrintWriter writer;
-    private int areaTotal;
+    private ExecutorService es;//Ejecutor de los hilos
+    private ArrayList<Square> squareList;//Lista de cuadrados
+    private final String filename;//Nombre del archivo a guardar
+    private PrintWriter writer;//Escritor de archivo
+    private int areaTotal;//Area de la alfombra
 
+    /**
+     * Constuctor
+     * @param squareList \n lista de cuadrados
+     * @param filename \n archivo donde escribir
+     */
     public Carpet(ArrayList<Square> squareList, String filename) {
         this.squareList = squareList;
         this.filename = filename;
         es = Executors.newCachedThreadPool();
     }
 
+    /**
+     * Seccion critica Acceso a escritura en el archivo
+     * @param index
+     * @return
+     * @throws InterruptedException
+     */
     public synchronized boolean writeToFile(int index) throws InterruptedException {
         try {
             File f = new File(filename);
@@ -46,6 +57,10 @@ public class Carpet implements Runnable{
         }
     }
     
+    /**
+     * Seccion critica Calculadora de area
+     * @param index
+     */
     public synchronized void addAreatTotal(int index){
         this.areaTotal += squareList.get(index).getArea();
     }

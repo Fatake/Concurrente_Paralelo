@@ -12,18 +12,20 @@
 * Hilo encargado de calcular un el area de un cuadrado de la alfombra
 * y añade dicha area al area total
 */
-
-
 public class AreaCalculator implements Runnable{
     
     private final Carpet carpet;
     private final int index;
 
+    /**
+     * Calculadora de la area, requiere carpeta y un indice
+     * @param carpet
+     * @param index
+     */
     public AreaCalculator(Carpet carpet, int index) {
         this.carpet = carpet;
         this.index = index;
     }
-    
 
     @Override
     public void run() {

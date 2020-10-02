@@ -1,0 +1,10 @@
+Square #Point{x=13, y=10}, Side Length: 3, Color: #19f6ea
+Square #Point{x=9, y=11}, Side Length: 10, Color: #7e3626
+Square #Point{x=1, y=4}, Side Length: 9, Color: #6d562e
+Square #Point{x=2, y=10}, Side Length: 4, Color: #e1ce6e
+Square #Point{x=8, y=10}, Side Length: 5, Color: #33b575
+Square #Point{x=3, y=1}, Side Length: 1, Color: #3969a2
+Square #Point{x=7, y=8}, Side Length: 14, Color: #f577fd
+Square #Point{x=13, y=2}, Side Length: 13, Color: #87b342
+Square #Point{x=5, y=5}, Side Length: 10, Color: #3d1b20
+Square #Point{x=11, y=14}, Side Length: 11, Color: #79c991

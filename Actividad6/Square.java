@@ -11,12 +11,17 @@
  * Clase que representa un cuadrado, asi como las coordenadas
  * correspondientes en la clase alfombra
  */
-
- public class Square {
+public class Square {
     private int sideLength;
     private String color;
     private Point position;
 
+    /**
+     * 
+     * @param sideLength \n Tamaño
+     * @param color \n color del cuadrado en la alfombra
+     * @param position \n requiere de una clase punto
+     */
     public Square(int sideLength, String color, Point position) {
         this.sideLength = sideLength;
         this.color = color;
