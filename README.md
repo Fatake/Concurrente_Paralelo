@@ -7,7 +7,7 @@ Serie de programas creados en python, java y c para el aprendizaje de concurrenc
 
 1. [Actividad4](https://github.com/Fatake/Concurrente_Paralelo/tree/master/Activida4 "Actividad4")
 2. [Actividad6](https://github.com/Fatake/Concurrente_Paralelo/tree/master/Actividad6 "Actividad6")
-3. [Actividad7](https://github.com/Fatake/Concurrente_Paralelo/tree/master/Actividad7 "Actividad7")
+
 
 ## Descripción Actividades
 
