@@ -46,7 +46,7 @@ Realizar actividades en hilos para un fin común
   * Al final el hilo padre debe mostrar el área obtenida como la suma del área de todas las figuras geométricas
 
 ---
-#### Actividad 6
+#### Actividad 9
 
 **Objetivo**
 
