@@ -46,18 +46,19 @@ Realizar actividades en hilos para un fin común
   * Al final el hilo padre debe mostrar el área obtenida como la suma del área de todas las figuras geométricas
 
 ---
-
-#### Actividad 7
+#### Actividad 6
 
 **Objetivo**
 
-Aplicar las condiciones de Bernstein al proceso concurrente de la Actividad 6 Hilos Cooperando
-
+Aplicar los conceptos de semáforos, monitores o pasos de mensajes para resolver un problema de carácter concurrente
 **Instrucciones**
 
-* Revisar las diapositivas Condiciones de Bernstein.pdf
+* Video https://www.youtube.com/watch?v=ZEitds5Nnx4
+* Revisar el video https://www.youtube.com/watch?v=riGl1djNpfg
+* Revisar el tema de tuberías del libro Java 2: curso de programación
+* De la página 714 a la 718 https://elibro-net.proxydgb.buap.mx/es/ereader/bibliotecasbuap/59727?page=742
 
-Revisar el video [https://www.youtube.com/watch?v=riGl1djNpfg](https://www.youtube.com/watch?v=riGl1djNpfg)
+* Crear la simulación de un entorno concurrente del siguiente escenario con su correspondiente análisis:
+ 
+Proceso de inscripción primavera 2021: en ese caso se modelará cuando la Secretaría Académica solicita a los profesores inscribirse a las materias(archivo), inicialmente el archivo solo tiene materias y los profesores las solicitan, cuidando que no se asigne la misma materia a dos profesores distintos, posteriormente la Secretaría publica los horarios para que los alumnos se puedan inscribir, por lo que los alumnos sólo podrán ver las materias hasta que los profesores tomen las mismas, considerar que un curso puede ser solicitado por muchos alumnos pero tiene una capacidad finita. Si el curso (nrc) ya no tiene capacidad tendrá opción de inscribirse en otro nrc. No es necesario modelar toda la población de profesores y estudiantil sólo con al menos 5 profesores y 5 alumnos y el número de nrc que consideren.
 
-* Aplicar las condiciones de Bernstein al proceso de cooperación de los hilos de la actividad 6
-* Elaborar un documento donde se indique como se aplicaría
