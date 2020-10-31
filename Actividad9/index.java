@@ -7,22 +7,29 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 
 public class Index {
-    private PipedOutputStream output;
-    private PipedInputStream input;
+    private PipedOutputStream pipeOut;
+    private PipedInputStream pipeIn;
     private ExecutorService ejecutor;
 
     public Index(){ };
 
     public void init() throws InterruptedException{
         // Inicicia los Pipes
-        PipedInputStream pipeIn = new PipedInputStream();
-        PipedOutputStream pipeOut = new PipedOutputStream();
+        pipeOut = new PipedOutputStream();
 
-        DataInputStream myIn = new DataInputStream(pipeIn);
-        DataOutputStream myOut = new DataOutputStream(pipeOut);
+        try {
+            pipeIn = new PipedInputStream(pipeOut);
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("\nProblema al hacer link\n");
+        }
+        
 
-        SecretariaA secre = new SecretariaA(myOut,myIn);
-        Profesor profe = new Profesor("alverto",myOut,myIn);
+        DataInputStream streamIn = new DataInputStream(pipeIn);
+        DataOutputStream streamOut = new DataOutputStream(pipeOut);
+
+        SecretariaA secre = new SecretariaA(streamOut,streamIn);
+        Profesor profe = new Profesor("alverto",streamOut,streamIn);
         Alumno alum = new Alumno("Juan");
         ejecutor = Executors.newFixedThreadPool(3);
 

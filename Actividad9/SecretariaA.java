@@ -24,7 +24,8 @@ public class SecretariaA implements Runnable {
     @Override
     public void run() {
         try {
-            this.out.writeChars("Hola soy la secre");
+            this.out.writeInt(3333);
+            System.out.println("E enviado el NRC:"+3333);
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("\nProblema al escribir pipe\n");

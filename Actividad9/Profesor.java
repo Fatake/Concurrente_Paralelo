@@ -20,8 +20,8 @@ public class Profesor implements Runnable {
     @Override
     public void run() {
         try {
-            String aux = in.readUTF();
-            System.out.println("E leido :"+aux);
+            int aux = in.readInt();
+            System.out.println("Me e inscrito en el NRC :"+aux);
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("\nProblema al leer pipe\n");
