@@ -5,8 +5,7 @@ class Multiple extends Thread{
     private DataOutputStream out;
     public Multiple(int m, PipedInputStream i,PipedOutputStream o){
         mult = m;
-        try
-        {
+        try{
             in = new DataInputStream(new PipedInputStream(o));
             out = new DataOutputStream(new PipedOutputStream(i));
         }catch (IOException e) { }
