@@ -7,25 +7,24 @@ import java.io.PipedOutputStream;
  * Secretaria Accademica
  */
 public class SecretariaA implements Runnable {
-    private DataOutputStream output;
-    private DataInputStream input;
+    private DataOutputStream out;
+    private DataInputStream in;
 
-    public SecretariaA(PipedOutputStream out, PipedInputStream inp ) {
+    /**
+     * Constructor secretaria academica
+     * @param o -> output pipe
+     * @param i -> intput pipe
+     */
+    public SecretariaA(DataOutputStream o, DataInputStream i ) {
         super();
-        try{
-            //input = new DataInputStream(new PipedInputStream(out));
-            output = new DataOutputStream(new PipedOutputStream(inp));
-        }
-        catch (IOException e) { 
-            e.printStackTrace();
-            System.out.println("\nProblema al escribir pipe\n");
-        }
+        this.in = i;
+        this.out = o;
     }
 
     @Override
     public void run() {
         try {
-            this.output.writeChars("Hola soy la secre");
+            this.out.writeChars("Hola soy la secre");
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("\nProblema al escribir pipe\n");

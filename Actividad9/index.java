@@ -3,6 +3,8 @@ import java.util.concurrent.Executors;
 import java.io.IOException;
 import java.io.PipedInputStream;
 import java.io.PipedOutputStream;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 
 public class Index {
     private PipedOutputStream output;
@@ -13,16 +15,14 @@ public class Index {
 
     public void init() throws InterruptedException{
         // Inicicia los Pipes
-        output = new PipedOutputStream();
-        try {
-            input = new PipedInputStream(output);
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.exit(-1);
-        }
+        PipedInputStream pipeIn = new PipedInputStream();
+        PipedOutputStream pipeOut = new PipedOutputStream();
 
-        SecretariaA secre = new SecretariaA(output,input);
-        Profesor profe = new Profesor("alverto",output,input);
+        DataInputStream myIn = new DataInputStream(pipeIn);
+        DataOutputStream myOut = new DataOutputStream(pipeOut);
+
+        SecretariaA secre = new SecretariaA(myOut,myIn);
+        Profesor profe = new Profesor("alverto",myOut,myIn);
         Alumno alum = new Alumno("Juan");
         ejecutor = Executors.newFixedThreadPool(3);
 

@@ -6,28 +6,21 @@ import java.io.PipedOutputStream;
 
 public class Profesor implements Runnable {
     private String nombre;
-    private DataOutputStream output;
-    private DataInputStream input;
+    private DataInputStream in;
+    private DataOutputStream out;
 
-    public Profesor (String nombre, PipedOutputStream pipeOutput, PipedInputStream pipeInput ) {
+    public Profesor (String nombre, DataOutputStream o, DataInputStream i  ) {
         super();
         this.nombre = nombre;
         // Inicicia los Pipes
-        try{
-            input = new DataInputStream(new PipedInputStream(pipeOutput));
-            //output = new DataOutputStream(new PipedOutputStream(pipeInput));
-        }
-        catch (IOException e) { 
-            e.printStackTrace();
-            System.out.println("\nEn al inicio\n");
-        }
+        this.in = i;
+        this.out = o;
     }
     
-
     @Override
     public void run() {
         try {
-            String aux = input.readUTF();
+            String aux = in.readUTF();
             System.out.println("E leido :"+aux);
         } catch (IOException e) {
             e.printStackTrace();
