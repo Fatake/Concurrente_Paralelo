@@ -1,19 +1,18 @@
 import java.io.BufferedReader;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-
 
 /**
  * Secretaria Academica
  */
 public class SecretariaA implements Runnable {
     private static final String FILE_NAME = "materias.txt";
-    private DataOutputStream out;
-    private DataInputStream in;
+    private ObjectOutputStream out;
+    private ObjectInputStream in;
 
     private ArrayList<Materia> materias;
 
@@ -26,7 +25,7 @@ public class SecretariaA implements Runnable {
      * @param o -> output pipe
      * @param i -> intput pipe
      */
-    public SecretariaA(DataOutputStream o, DataInputStream i ) {
+    public SecretariaA(ObjectOutputStream o, ObjectInputStream i ) {
         super();
         this.in = i;
         this.out = o;
@@ -35,16 +34,21 @@ public class SecretariaA implements Runnable {
 
     @Override
     public void run() {
+        // Lee el archivo de materias
+        leeArchivo();
+        
+        // Prueba el enviod e una matera
         try {
-            this.out.writeInt(3333);
-            System.out.println("E enviado el NRC:"+3333);
+            System.out.println("E enviado la materia:"+materias.get(1).getName());
+            this.out.writeObject(materias.get(1));
+            // Para enviar objetos estos debene ser
+            // Serializables
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("\nProblema al escribir pipe\n");
         }
         System.out.println("Soy secretaria");
-        leeArchivo();
-        printMaterias();
+        
     }
 
     /**

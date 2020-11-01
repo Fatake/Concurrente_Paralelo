@@ -1,15 +1,13 @@
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.PipedInputStream;
-import java.io.PipedOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 public class Profesor implements Runnable {
     private String nombre;
-    private DataInputStream in;
-    private DataOutputStream out;
+    private ObjectInputStream in;
+    private ObjectOutputStream out;
 
-    public Profesor (String nombre, DataOutputStream o, DataInputStream i  ) {
+    public Profesor (String nombre, ObjectOutputStream o, ObjectInputStream i  ) {
         super();
         this.nombre = nombre;
         // Inicicia los Pipes
@@ -19,10 +17,11 @@ public class Profesor implements Runnable {
     
     @Override
     public void run() {
+        // Prueba recibir materias
         try {
-            int aux = in.readInt();
-            System.out.println("Me e inscrito en el NRC :"+aux);
-        } catch (IOException e) {
+            Materia aux2 = (Materia) this.in.readObject();
+            System.out.println("Me inscribi en la materia: "+aux2.getName());
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
             System.out.println("\nProblema al leer pipe\n");
         }

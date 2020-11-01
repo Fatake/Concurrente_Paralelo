@@ -1,4 +1,6 @@
-public class Materia {
+import java.io.Serializable;
+
+public class Materia implements Serializable {
     private String nombre;
     private int nrc;
 
