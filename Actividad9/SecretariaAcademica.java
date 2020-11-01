@@ -132,6 +132,7 @@ public class SecretariaAcademica {
         }
         catch(Exception e){
             e.printStackTrace();
+            System.out.println("\u001B[31m [*] Error al abrir  El archivo\u001B[0m");
         }finally{
             try{                    
                 if( null != fr ){   
@@ -139,6 +140,7 @@ public class SecretariaAcademica {
                 }                  
             }catch (Exception e2){ 
                 e2.printStackTrace();
+                System.out.println("\u001B[31m [*] Error al abrir  El archivo\u001B[0m");
                 return null;
             }
         }
