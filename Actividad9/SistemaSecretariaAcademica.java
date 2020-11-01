@@ -10,7 +10,7 @@ public class SistemaSecretariaAcademica {
         SecretariaAcademica sa = new SecretariaAcademica();
         Materia[] materias = sa.getMaterias();
 
-        CountDownLatch cdlP = new CountDownLatch(3);
+        CountDownLatch cdlP = new CountDownLatch(3); // Esta madre permite esperar por hilos
         Profesor[] p = new Profesor[]{
             new Profesor("Paty", new Materia[] {materias[0], materias[1], materias[2]}, sa, cdlP, 3),
             new Profesor("Hilda", new Materia[] {materias[1], materias[2], materias[3]}, sa, cdlP, 2),
