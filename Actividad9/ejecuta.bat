@@ -1,3 +1,3 @@
-javac -d class Index.java
-java -cp class Index
+javac -d class SistemaSecretariaAcademica.java
+java -cp class SistemaSecretariaAcademica
 pause
