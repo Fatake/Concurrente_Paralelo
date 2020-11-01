@@ -16,15 +16,14 @@ public class Index {
     public void init() throws InterruptedException{
         // Inicicia los Pipes
         pipeOut = new PipedOutputStream();
-
         try {
             pipeIn = new PipedInputStream(pipeOut);
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("\nProblema al hacer link\n");
         }
-        
 
+        // Escritores en los pipes
         DataInputStream streamIn = new DataInputStream(pipeIn);
         DataOutputStream streamOut = new DataOutputStream(pipeOut);
 
