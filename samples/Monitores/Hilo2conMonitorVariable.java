@@ -5,13 +5,16 @@ public class Hilo2conMonitorVariable extends Thread {
 	boolean jefe;
 
 	public Hilo2conMonitorVariable(String id,boolean soyJefe,MonitorConVariable m) {
-		super(id);
-		this.id = id;
-		this.m = m;
-		this.jefe = soyJefe;
+    super(id);
+    this.id=id;
+	this.m=m;
+	this.jefe=soyJefe;
+
 	}
 
 	public void run(){
-		m.saludomundo(id+" soy jefe "+jefe,jefe);
+
+	m.saludomundo(id+" soy jefe "+jefe,jefe);
+
 	}
 }
