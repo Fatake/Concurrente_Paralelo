@@ -1,23 +1,34 @@
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.util.ArrayList;
 
+
 public class SecretariaAcademica {
+    private static final String FILE_NAME = "materias.txt";
     private static int NRC = 10000;
     private final ArrayList<Curso> cursos;
+    private Materia[] materias;
     
+    private File archivo = null;
+    private FileReader fr = null;
+    private BufferedReader br = null;
     
-    public SecretariaAcademica(Materia[] materias){
-        this.cursos = new ArrayList<>();
-        crearCursos(materias);
+    public SecretariaAcademica(){
+        this.materias = leeArchivo();
+        this.cursos = crearCursos(materias,3);
     }
     
     /**
-     * 
+     * Funcion que genera cursos dados una materia
      * @param materias
      */
-    private void crearCursos(Materia[] materias){
+    public ArrayList<Curso> crearCursos(Materia[] materias, int cupo){
+        ArrayList<Curso> lista = new ArrayList<>();
         for (Materia materia : materias){
-            cursos.add(new Curso(NRC++, materia, 3));
-        }  
+            lista.add(new Curso(NRC++, materia, cupo));
+        }
+        return lista;
     }
     
     /**
@@ -98,5 +109,48 @@ public class SecretariaAcademica {
                     System.out.println("La materia: " + materia.getNombre() + " con NRC: " + curso.getNRC() + ", no tiene espacio disponible"); 
             }
         } 
+    }
+
+    /**
+     * Lee el archivo Materias.txt
+     * Retorna una arreglo de materias
+     * @return
+     */
+    private Materia[] leeArchivo(){
+        ArrayList<Materia> mat = new ArrayList<>();
+        try {
+            archivo = new File (FILE_NAME);
+            fr = new FileReader (archivo);
+            br = new BufferedReader(fr);
+
+            int contador = 1;
+            String linea;
+            while((linea = br.readLine())!=null){
+                contador ++;
+                mat.add(new Materia(""+contador, linea));
+            }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            try{                    
+                if( null != fr ){   
+                    fr.close();  
+                }                  
+            }catch (Exception e2){ 
+                e2.printStackTrace();
+                return null;
+            }
+        }
+        Materia[] mater = new Materia[mat.size()];
+        return mat.toArray(mater);
+    }
+
+    /**
+     * Retona un arreglo de materias
+     * @return
+     */
+    public Materia[] getMaterias(){
+            return this.materias;
     }
 }
