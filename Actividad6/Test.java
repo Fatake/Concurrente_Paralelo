@@ -1,74 +1,75 @@
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.concurrent.Semaphore;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.TimeUnit;
 
+/**  
+ *  Benemérita Universidad Autónoma de Puebla
+ *  Programación Concurrente y Paralela
+ *  Integrantes:
+ *  Arizmendi Ramírez Esiel Kevin, 201737811
+ *  Coria Rios Marco Antonio, 201734576
+ *  Ruiz Lozano Paulo Cesar, 201734576
+ */
 
 /**
  * Primer hilo en ejecutarse. Crea la lista de figuras {@link Square} y
- * el objeto de clase {@link Carpet}, al cual le pasa la lista creada.
- * Crea los dos hilos que se encargan tanto de calcular el área de calcular
- * el área de cada cuadrado como de almacenar en el archivo de la alfombra
- * la información de cada uno de ellos, respectivamente.
+ * el objeto (hilo) de clase {@link Carpet}, al cual le pasa la lista creada.
  * También contiene el método <code>main</code>.
  */
-
-public class Test extends Thread {
-    private Random rand;
-    private Semaphore sem;
-    private int count;
-
-    public Test() {
-        rand = new Random();
-        sem = new Semaphore(1);
-        count = 10;
-    }
-
-    @Override
-    public void run() {
-        ArrayList<Square> squares = new ArrayList<>();
-
-        // Crea los cuadrados, con tamaño y color aleatorios
-        for (int i = 0; i < MAX_SQUARES; i++) {
-            squares.add(new Square(rand.nextInt(14) + 1, Integer.toHexString(rand.nextInt(0xFFFFFF)), i));
-        }
-
-        // Crea la alfombra
-        Carpet carpet = new Carpet(squares, "carpet.txt");
-
-        // Crea los hilos para el procesamiento
-        for (int i = 0; i < MAX_SQUARES; i++) {
-            AreaCalculator calc = new AreaCalculator(this, squares.get(i));
-            DataWriter writer = new DataWriter(i, carpet);
-
-            calc.start();
-            writer.start();
-        }
-
-        // Espera a que los hilos terminen y muestra el resultado
-        while (count != 0) {
-            try {
-                sleep(200);
-            }
-            catch (InterruptedException ie) {
-                System.out.println("Error");
-                System.exit(-1);
-            }
-        }
-
-        // Calcula el área total de la alfombra y la imprime en pantalla
-        System.out.println("Area total de la alfombra: " + carpet.totalSurface());
-    }
-
-    public void notifyFinish() throws InterruptedException {
-        sem.acquire();
-        count--;
-        sem.release();
-    }
-
+public class Test{
+    //Constantes
     public static final int MAX_SQUARES = 10;
 
-    public static void main(String[] args) {
+    //Atributos
+    private ExecutorService es;
+    private Random rand;
+    private Carpet carpet;
+
+    //Constuctor
+    public Test(){  };
+
+    /**
+     * Inicializa 
+     * @throws InterruptedException
+     */
+    public void init() throws InterruptedException{
+        rand = new Random();
+        ArrayList<Square> squares = new ArrayList<>(); //Lista de cuadrados
+        es = Executors.newCachedThreadPool(); // Crea una nueva picina de hilos
+
+        // Crea los cuadrados, con tamaño y color aleatorios
+        for (int i = 0; i < MAX_SQUARES; i++){
+            squares.add( new Square( rand.nextInt(14) + 1, 
+                        Integer.toHexString(rand.nextInt(0xFFFFFF)), 
+                            new Point(rand.nextInt(14) + 1, rand.nextInt(14) + 1) ) );
+    
+        }
+            
+        // Crea el hilo de la alfombra
+        //System.out.println("TEST CREA ALFOMBRA");
+        carpet = new Carpet(squares, "carpet.txt");
+        es.execute(carpet);// ejecuta el hilo carpeta
+        es.shutdown();
+        
+        //Se mantiene en un ciclo infinito hasta que todo el procesamiento haya terminado
+        while (!es.awaitTermination(60, TimeUnit.SECONDS));
+            //System.out.println("TEST...");
+        
+        //System.out.println("TEST TERMINO");
+        
+        //Imprime el area total
+        System.out.println("AREA TOTAL: " + carpet.getAreaTotal());
+    }
+    
+    /**
+     * Main del programa
+     * @param args
+     * @throws InterruptedException
+     */
+    public static void main(String[] args) throws InterruptedException {
         Test test = new Test();
-        test.start();
+        test.init();
     }
 }

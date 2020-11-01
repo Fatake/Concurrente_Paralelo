@@ -1,14 +1,31 @@
+/**  
+ *  Benemérita Universidad Autónoma de Puebla
+ *  Programación Concurrente y Paralela
+ *  Integrantes:
+ *  Arizmendi Ramírez Esiel Kevin, 201737811
+ *  Coria Rios Marco Antonio, 201734576
+ *  Ruiz Lozano Paulo Cesar, 201734576
+ */
+
+/**
+ * Clase que representa un cuadrado, asi como las coordenadas
+ * correspondientes en la clase alfombra
+ */
 public class Square {
     private int sideLength;
     private String color;
-    private int position;
-    private int area;
+    private Point position;
 
-    public Square(int sideLength, String color, int position) {
+    /**
+     * 
+     * @param sideLength \n Tamaño
+     * @param color \n color del cuadrado en la alfombra
+     * @param position \n requiere de una clase punto
+     */
+    public Square(int sideLength, String color, Point position) {
         this.sideLength = sideLength;
         this.color = color;
         this.position = position;
-        area = 0;
     }
 
     public int getSideLength() {
@@ -19,16 +36,12 @@ public class Square {
         return color;
     }
 
-    public int getPosition() {
+    public Point getPosition() {
         return position;
     }
 
     public int getArea() {
-        return area;
-    }
-
-    public void setArea(int area) {
-        this.area = area;
+        return (int) Math.pow(sideLength, 2);
     }
 
     @Override
@@ -36,3 +49,4 @@ public class Square {
         return "Square #" + position + ", Side Length: " + sideLength + ", Color: #" + color;
     }
 }
+
