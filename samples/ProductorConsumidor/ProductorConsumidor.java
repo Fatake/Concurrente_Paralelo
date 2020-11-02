@@ -20,9 +20,57 @@ public class ProductorConsumidor implements Runnable{
 
     @Override
     public void run(){
-
+        while (true) {
+            if (consumidor) {
+                consumir();
+            } else { // Productor
+                produce();
+            }
+        }
     }
 
+    private void consumir(){
+        synchronized (lock){
+            if (tarta > 0) {
+                tarta --;
+                System.out.println("[C] Me e comido una tarta, quedan "+tarta);
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            } else { // ya no hay tartas
+                lock.notifyAll(); // no se puede despertar a un hilo en concreto
+                try { // me mimo
+                    lock.wait();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    private void produce(){
+        synchronized (lock){ // la variable tarta es un recurso compartido
+            if (tarta == 0) {
+                tarta = 10;
+                System.out.println("[P] Produzco "+tarta+" tartas");
+                lock.notifyAll();// Despertar a todos los consumidores
+            }
+            // se duerme el productor
+            try {
+                lock.wait();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    /**
+     * Donde el hilo[0] es productor
+     * los otros 10 hilos son consumidores
+     * @param args
+     */
     public static void main(String[] args) {
         int numHilos = 11;
         Thread[] hilos = new Thread[numHilos];
