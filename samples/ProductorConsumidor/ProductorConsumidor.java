@@ -10,12 +10,18 @@
      */
 public class ProductorConsumidor implements Runnable{
     private boolean consumidor;
+    private int id;
 
     private static int tarta = 0;
+    private static int c = 1;
     private static Object lock = new Object();
 
     public ProductorConsumidor(boolean consumidor){
         this.consumidor = consumidor;
+        if (consumidor) {
+            this.id = c;
+            c++;
+        }
     }
 
     @Override
@@ -33,7 +39,7 @@ public class ProductorConsumidor implements Runnable{
         synchronized (lock){
             if (tarta > 0) {
                 tarta --;
-                System.out.println("[C] Me e comido una tarta, quedan "+tarta);
+                System.out.println("[C"+id+"] Me e comido una tarta, quedan "+tarta);
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {
