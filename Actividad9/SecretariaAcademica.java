@@ -77,13 +77,13 @@ public class SecretariaAcademica {
         Curso[] cursos = getCursos(materia);
         for (Curso curso : cursos){
             synchronized (curso){
-                System.out.println("El profesor " + profesor.getNombre() + "solicita su asignación en curso con NRC: " + curso.getNRC());
+                System.out.println("El profesor(a) " + profesor.getNombre() + " solicita su asignación en curso con NRC: " + curso.getNRC());
                 if (!curso.hayProfesorAsignado()){
                     curso.setProfesor(profesor);
                     profesor.inscrito();
-                    System.out.println("Se asignó al profesor " + profesor.getNombre() + " a la materia: " + materia.getNombre() + " con NRC: " + curso.getNRC());
+                    System.out.println("Se asignó al profesor(a) " + profesor.getNombre() + " a la materia: " + materia.getNombre() + " con NRC: " + curso.getNRC());
                 }else
-                    System.out.println("El curso de la materia: " + materia.getNombre() + " con NRC: " + curso.getNRC() + ", ya tiene profesor asignado");
+                    System.out.println("El curso de la materia: " + materia.getNombre() + " con NRC: " + curso.getNRC() + ", ya tiene profesor(a) asignado");
             }
         }
     }
@@ -99,22 +99,22 @@ public class SecretariaAcademica {
         Curso[] cursos = getCursos(materia);
         for (Curso curso : cursos)
             if (curso.estaIncrito(alumno)){
-                System.out.println("El alumno " + alumno.getNombre() + " ya se incribió anteriormente en el curso de la materia " + materia.getNombre() + " con NRC: " + curso.getNRC());
+                System.out.println("El alumno(a) " + alumno.getNombre() + " ya se incribió anteriormente en el curso de la materia " + materia.getNombre() + " con NRC: " + curso.getNRC());
                 return;
             }
                 
         for (Curso curso : cursos){
             synchronized (curso){
-                System.out.println("El alumno " + alumno.getNombre() + "solicita su inscripción en el curso con NRC: " + curso.getNRC());
+                System.out.println("El alumno(a) " + alumno.getNombre() + " solicita su inscripción en el curso con NRC: " + curso.getNRC());
                 if(curso.hayProfesorAsignado()){
                     if (curso.hayCupo()){
                         curso.incribirAlumno(alumno);
                         alumno.inscrito();
-                        System.out.println("Se inscribió al alumno " + alumno.getNombre() + " al curso de la materia: " + materia.getNombre() + " con NRC: " + curso.getNRC());
+                        System.out.println("Se inscribió al alumno(a) " + alumno.getNombre() + " al curso de la materia: " + materia.getNombre() + " con NRC: " + curso.getNRC() + " con el profesor(a) " + curso.getProfesor().getNombre());
                     }else
                         System.out.println("El curso de la materia: " + materia.getNombre() + " con NRC: " + curso.getNRC() + ", no tiene espacio disponible");
                 }else
-                    System.out.println("El curso de la materia: " + materia.getNombre() + " con NRC: " + curso.getNRC() + ", no tiene profesor asignado");
+                    System.out.println("El curso de la materia: " + materia.getNombre() + " con NRC: " + curso.getNRC() + ", no tiene profesor(a) asignado");
                  
             }
         } 
