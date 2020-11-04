@@ -27,6 +27,6 @@ public class Monitor {
         for (int i = 0; i < size; i++) {
             cont ++;
         }
-        return 1;
+        return cont;
     }
 }
