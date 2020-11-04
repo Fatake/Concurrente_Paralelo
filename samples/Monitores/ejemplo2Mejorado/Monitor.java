@@ -12,7 +12,29 @@ public class Monitor {
         }
         return cont;
     }
-
+    /**
+     * Desventaja de cerrojos
+     *  siempre provee de exclusion mutua
+     *  Por lo tanto ejecutan operaciones de manera secuencia en 
+     *  esa parte del codigo
+     * 
+     *  Comprobar si es el turno del hilo son pasos de mas
+     * 
+     *  Lo mejor es hacer buffer donde una parte es synchonizado pero entonces
+     *  ya no seria un monitor
+     *  Pero la ganancia de rendimiento es la mejor
+     *  Formalmente todos los monitores los metodos publicos todos son sincronizados
+     * 
+     *  Casi nunca se usan 
+     * 
+     * Ventaja:
+     *  Simplifica codigo
+     *  Delega todo lo concurrente a una clase
+     *  Es imposible que existan interbloqueos
+     *  Permite hacer modulos separar codigo y hacerlo reutilizable 
+     * 
+     * @param id
+     */
     public synchronized void ordenar(int id) {
         // Se requiere una condicion de cuarda
         // condicion de concurso
