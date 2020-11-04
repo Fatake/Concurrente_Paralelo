@@ -133,7 +133,7 @@ public class Curso {
                 info.append(alumno.getNombre()).append('\n');
             }
         }else{
-            info.append("No hay alumnos registrados");
+            info.append("No hay alumnos registrados\n");
         }
         return info.toString();
     }
