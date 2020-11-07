@@ -82,6 +82,7 @@ public class SecretariaAcademica {
                     curso.setProfesor(profesor);
                     profesor.inscrito();
                     System.out.println("Se asignó al profesor(a) " + profesor.getNombre() + " a la materia: " + materia.getNombre() + " con NRC: " + curso.getNRC());
+                    return;
                 }else
                     System.out.println("El curso de la materia: " + materia.getNombre() + " con NRC: " + curso.getNRC() + ", ya tiene profesor(a) asignado");
             }
@@ -111,6 +112,7 @@ public class SecretariaAcademica {
                         curso.incribirAlumno(alumno);
                         alumno.inscrito();
                         System.out.println("Se inscribió al alumno(a) " + alumno.getNombre() + " al curso de la materia: " + materia.getNombre() + " con NRC: " + curso.getNRC() + " con el profesor(a) " + curso.getProfesor().getNombre());
+                        return;
                     }else
                         System.out.println("El curso de la materia: " + materia.getNombre() + " con NRC: " + curso.getNRC() + ", no tiene espacio disponible");
                 }else
