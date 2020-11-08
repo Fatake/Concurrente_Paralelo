@@ -125,8 +125,10 @@ public class Curso {
     @Override
     public String toString(){
         StringBuilder info = new StringBuilder();
+        info.append("NRC: ").append(NRC).append('\n');
+        info.append("Cupo: ").append(cupo).append('\n');
         info.append("Materia: ").append(materia.getNombre()).append('\n');
-        info.append("Profesor: ").append((profesor != null) ? profesor.getNombre() : "No hay profesor asignado\n").append('\n');
+        info.append("Profesor: ").append((profesor != null) ? profesor.getNombre() + "\n" : "No hay profesor asignado\n").append('\n');
         if (disponibles < cupo){
             info.append("Alumnos: ").append('\n');
             for (Alumno alumno : alumnos){
