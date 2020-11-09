@@ -74,24 +74,24 @@ public class SecretariaAcademica {
      * Asigna al profesor especificado, en algún curso que tenga la materia especificada.
      * @param profesor Profesor a asignar al curso
      * @param materia Materia que el curso debe tener
-     * @return 
      */
     public void registrarProfesor(Profesor profesor, Materia materia){
+        System.out.println("El profesor(a) " + profesor.getNombre() + " solicita su asignación en la materia: " + materia.getNombre());
         Curso[] cursos = getCursos(materia);
         for (Curso curso : cursos){
             synchronized (curso){
                 synchronized (profesor){
-                    System.out.println("El profesor(a) " + profesor.getNombre() + " solicita su asignación en curso con NRC: " + curso.getNRC());
+                    //System.out.println("El profesor(a) " + profesor.getNombre() + " solicita su asignación en curso con NRC: " + curso.getNRC());
                     if (profesor.getRestantes() > 0){
                         if (!curso.hayProfesorAsignado()){
                             curso.setProfesor(profesor);
                             profesor.inscrito();
                             System.out.println("Se asignó al profesor(a) " + profesor.getNombre() + " a la materia: " + materia.getNombre() + " con NRC: " + curso.getNRC());
                             return;
-                        }else
-                            System.out.println("El curso de la materia: " + materia.getNombre() + " con NRC: " + curso.getNRC() + ", ya tiene profesor(a) asignado");
+                        }//else
+                            //System.out.println("El curso de la materia: " + materia.getNombre() + " con NRC: " + curso.getNRC() + ", ya tiene profesor(a) asignado");
                     }else{
-                       System.out.println("El profesor(a) " + profesor.getNombre() + " ya se registró en su máxima carga de materias");
+                       //System.out.println("El profesor(a) " + profesor.getNombre() + " ya registró en su máxima carga de materias");
                        return;
                     }
                     
@@ -107,9 +107,9 @@ public class SecretariaAcademica {
      * Inscribe al alumno especificado en algún curso que tenga la materia especificada.
      * @param alumno Alumno a inscribir en el curso
      * @param materia Materia que el curso debe tener
-     * @return 
      */
     public void inscribirAlumno(Alumno alumno, Materia materia){
+        System.out.println("El alumno(a) " + alumno.getNombre() + " solicita su inscripción en la materia: " + materia.getNombre());
         synchronized(alumno){
             Curso[] cursos = getCursos(materia);
             for (Curso curso : cursos)
@@ -119,7 +119,7 @@ public class SecretariaAcademica {
                 }
             for (Curso curso : cursos){
                 synchronized (curso){
-                        System.out.println("El alumno(a) " + alumno.getNombre() + " solicita su inscripción en el curso con NRC: " + curso.getNRC());
+                        //System.out.println("El alumno(a) " + alumno.getNombre() + " solicita su inscripción en el curso con NRC: " + curso.getNRC());
                         if (alumno.getRestantes() > 0){
                             if(curso.hayProfesorAsignado()){
                                 if (curso.hayCupo()){
@@ -128,16 +128,16 @@ public class SecretariaAcademica {
                                     System.out.println("Se inscribió al alumno(a) " + alumno.getNombre() + " al curso de la materia: " + materia.getNombre() + " con NRC: " + curso.getNRC() + " con el profesor(a) " + curso.getProfesor().getNombre());
                                     return;
                                 }else
-                                    System.out.println("El curso de la materia: " + materia.getNombre() + " con NRC: " + curso.getNRC() + ", no tiene cupo disponible");
-                            }else
-                                System.out.println("El curso de la materia: " + materia.getNombre() + " con NRC: " + curso.getNRC() + ", no tiene profesor(a) asignado");
+                                    System.out.println("El alumno(a) " + alumno.getNombre() + " no pudo inscribirse en el curso de la materia: " + materia.getNombre() + " con NRC: " + curso.getNRC() + ", porque no tiene cupo disponible");
+                            }//else
+                                //System.out.println("El curso de la materia: " + materia.getNombre() + " con NRC: " + curso.getNRC() + ", no tiene profesor(a) asignado");
                         }else{
-                            System.out.println("El alumno(a) " + alumno.getNombre() + " ya se inscribió su máxima carga de materias");
+                            //System.out.println("El alumno(a) " + alumno.getNombre() + " ya se inscribió su máxima carga de materias");
                             return;
                         }
                 }
             }
-        } 
+        }
     }
 
     /**

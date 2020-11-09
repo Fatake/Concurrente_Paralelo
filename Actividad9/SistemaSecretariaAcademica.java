@@ -22,20 +22,28 @@ public class SistemaSecretariaAcademica {
             new Profesor("Beatriz Beltran", generarMateriasDeseadas(materias, random.nextInt(5) + 2), sa, cdlP, random.nextInt(3) + 2)
         }; 
         
-        CountDownLatch cdlA = new CountDownLatch(12);
+        CountDownLatch cdlA = new CountDownLatch(20);
         Alumno[] a = new Alumno[]{
-            new Alumno("Esiel", generarMateriasDeseadas(materias, random.nextInt(6) + 3), sa, cdlA, random.nextInt(5) + 3),
-            new Alumno("Kevin", generarMateriasDeseadas(materias, random.nextInt(5) + 3), sa, cdlA, random.nextInt(5) + 3),
-            new Alumno("Marco", generarMateriasDeseadas(materias, random.nextInt(4) + 3), sa, cdlA, random.nextInt(4) + 3),
-            new Alumno("Antonio", generarMateriasDeseadas(materias, random.nextInt(5) + 3), sa, cdlA, random.nextInt(5) + 3),
-            new Alumno("Paulo", generarMateriasDeseadas(materias, random.nextInt(6) + 3), sa, cdlA, random.nextInt(5) + 3),
-            new Alumno("Cesar" , generarMateriasDeseadas(materias, random.nextInt(5) + 3), sa, cdlA, random.nextInt(5) + 3),
-            new Alumno("Angel", generarMateriasDeseadas(materias, random.nextInt(6) + 3), sa, cdlA, random.nextInt(5) + 3),
-            new Alumno("Miguel", generarMateriasDeseadas(materias, random.nextInt(5) + 3), sa, cdlA, random.nextInt(5) + 3),
-            new Alumno("Abigail", generarMateriasDeseadas(materias, random.nextInt(4) + 3), sa, cdlA, random.nextInt(4) + 3),
-            new Alumno("Ariatna", generarMateriasDeseadas(materias, random.nextInt(5) + 3), sa, cdlA, random.nextInt(5) + 3),
-            new Alumno("Quetzalli", generarMateriasDeseadas(materias, random.nextInt(6) + 3), sa, cdlA, random.nextInt(5) + 3),
-            new Alumno("Misael" , generarMateriasDeseadas(materias, random.nextInt(5) + 3), sa, cdlA, random.nextInt(5) + 3)
+            new Alumno("Esiel", generarMateriasDeseadas(materias, random.nextInt(6) + 3), sa, cdlA, random.nextInt(3) + 3),
+            new Alumno("Kevin", generarMateriasDeseadas(materias, random.nextInt(5) + 3), sa, cdlA, random.nextInt(3) + 3),
+            new Alumno("Marco", generarMateriasDeseadas(materias, random.nextInt(4) + 3), sa, cdlA, random.nextInt(3) + 3),
+            new Alumno("Antonio", generarMateriasDeseadas(materias, random.nextInt(5) + 3), sa, cdlA, random.nextInt(3) + 3),
+            new Alumno("Paulo", generarMateriasDeseadas(materias, random.nextInt(6) + 3), sa, cdlA, random.nextInt(3) + 3),
+            new Alumno("Cesar" , generarMateriasDeseadas(materias, random.nextInt(5) + 3), sa, cdlA, random.nextInt(3) + 3),
+            new Alumno("Angel", generarMateriasDeseadas(materias, random.nextInt(6) + 3), sa, cdlA, random.nextInt(3) + 3),
+            new Alumno("Miguel", generarMateriasDeseadas(materias, random.nextInt(5) + 3), sa, cdlA, random.nextInt(3) + 3),
+            new Alumno("Abigail", generarMateriasDeseadas(materias, random.nextInt(4) + 3), sa, cdlA, random.nextInt(3) + 3),
+            new Alumno("Ariatna", generarMateriasDeseadas(materias, random.nextInt(5) + 3), sa, cdlA, random.nextInt(3) + 3),
+            new Alumno("Quetzalli", generarMateriasDeseadas(materias, random.nextInt(6) + 3), sa, cdlA, random.nextInt(3) + 3),
+            new Alumno("Misael" , generarMateriasDeseadas(materias, random.nextInt(5) + 3), sa, cdlA, random.nextInt(3) + 3),
+            new Alumno("Alicia" , generarMateriasDeseadas(materias, random.nextInt(5) + 3), sa, cdlA, random.nextInt(3) + 3),
+            new Alumno("Jazmín", generarMateriasDeseadas(materias, random.nextInt(6) + 3), sa, cdlA, random.nextInt(3) + 3),
+            new Alumno("Elena", generarMateriasDeseadas(materias, random.nextInt(5) + 3), sa, cdlA, random.nextInt(3) + 3),
+            new Alumno("María", generarMateriasDeseadas(materias, random.nextInt(4) + 3), sa, cdlA, random.nextInt(3) + 3),
+            new Alumno("Andres", generarMateriasDeseadas(materias, random.nextInt(5) + 3), sa, cdlA, random.nextInt(3) + 3),
+            new Alumno("Andrea", generarMateriasDeseadas(materias, random.nextInt(6) + 3), sa, cdlA, random.nextInt(3) + 3),
+            new Alumno("Judas" , generarMateriasDeseadas(materias, random.nextInt(5) + 3), sa, cdlA, random.nextInt(3) + 3),
+            new Alumno("Jesus" , generarMateriasDeseadas(materias, random.nextInt(5) + 3), sa, cdlA, random.nextInt(3) + 3)
         };
         
         System.out.println("||---------------------------- Asignación de Profesores ----------------------------||");
