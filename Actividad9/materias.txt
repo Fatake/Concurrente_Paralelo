@@ -1,0 +1,10 @@
+Metodología de la programación
+Programación I
+Ensamblador
+Programación II
+Estructura de Datos
+Análisis y Diseño de Algoritmos
+Sistemas Operativos I
+Programación Concurrente y Paralela
+Programación Distribuida Aplicada
+Técnicas de Inteligencia Artificial
